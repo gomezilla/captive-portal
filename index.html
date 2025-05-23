@@ -6,213 +6,96 @@
         <link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WiFi Voucher Login</title>
-        <style>
-            body.portal {
-                font-family: Arial, sans-serif;
-                background-color: #f5f5f5;
-                margin: 0;
-                padding: 20px;
-                color: #333;
-            }
-            .container {
-                max-width: 500px;
-                margin: 0 auto;
-                background: white;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-            .header {
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .carousel {
-                position: relative;
-                height: 150px;
-                overflow: hidden;
-                margin-bottom: 20px;
-            }
-            .carouselImage {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                position: absolute;
-                transition: opacity 1s ease-in-out;
-            }
-            .oper-section-item {
-                width: 100%;
-                padding: 12px;
-                margin: 5px 0;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                box-sizing: border-box;
-                font-size: 16px;
-            }
-            .button {
-                width: 100%;
-                padding: 12px;
-                background-color: #0066ff;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            .button:hover {
-                background-color: #0055dd;
-            }
-            #oper-hint {
-                color: red;
-                display: block;
-                margin: 10px 0;
-                text-align: center;
-            }
-            #priceTable {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 20px 0;
-            }
-            #priceTable th, #priceTable td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: left;
-            }
-            #priceTable th {
-                background-color: #f2f2f2;
-            }
-            .notes {
-                font-size: 12px;
-                color: #666;
-                text-align: center;
-                margin-top: 20px;
-            }
-            .password-wrapper {
-                position: relative;
-            }
-            .password-toggle {
-                position: absolute;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                cursor: pointer;
-            }
-            .collapsible {
-                width: 100%;
-                text-align: left;
-                padding: 12px;
-                margin: 5px 0;
-                background-color: #f1f1f1;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-            .content {
-                padding: 0 18px;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.2s ease-out;
-                background-color: #f9f9f9;
-                border-radius: 0 0 4px 4px;
-            }
-        </style>
     </head>
     <body class="portal">
         <div class="oper-section-outer">
-            <div class="oper-section-inner">
-                <div class="container">
-                    <div class="header">
-                        <div class="carousel">
-                            <img id="carouselImage1" class="carouselImage" src="res/img/image1.jpg" alt="Image 1">
-                            <img id="carouselImage2" class="carouselImage" src="res/img/image2.jpg" alt="Image 2" style="opacity: 0;">
-                            <img id="carouselImage3" class="carouselImage" src="res/img/image3.jpg" alt="Image 3" style="opacity: 0;">
+                <div class="oper-section-inner">
+                    <div class="container">
+                        <div class="header">
+                            <div class="carousel">
+                                <img id="carouselImage1" class="carouselImage" src="res/img/image1.jpg" alt="Image 1">
+                                <img id="carouselImage2" class="carouselImage" src="res/img/image2.jpg" alt="Image 2" style="display: none;">
+                                <img id="carouselImage3" class="carouselImage" src="res/img/image3.jpg" alt="Image 3" style="display: none;">
+                            </div>                  
+                        </div>                        
+                            <div id="hotspot-section">
+                                <div class="custom-select">
+                                    <select id="hotspot-selector" class="oper-section-item"></select>
+                                </div>
+                            </div>
+                            <form id="login-form">
+                                <div id="input-voucher" class="form-group">
+                                    <input id="voucherCode" class="oper-section-item input" name="voucherCode" type="text" placeholder="Enter voucher code"/>
+                                </div>
+                                <div id="input-user" class="form-group">
+                                    <input id="username" class="oper-section-item input" name="username" type="text" placeholder="Username"/>
+                                </div>
+                                <div id="input-password" class="form-group password-wrapper">
+                                    <input id="password" class="oper-section-item input" name="password" type="password" placeholder="Password"/>
+                                    <img src="res/img/eye-icon.png" alt="Show Password" id="togglePassword" class="password-toggle"/>
+                                </div>
+                                <div id="input-simple" class="form-group">
+                                    <input id="simplePassword" class="password oper-section-item" name="simplePassword" type="password" placeholder="Simple Password"/>
+                                </div>
+                                <div id="input-phone-num" class="form-group">
+                                    <span class="add"></span><input id="country-code" class="input" placeholder="Country Code">
+                                </div>
+                                <div id="input-phone-num" class="form-group>    
+                                    <input id="phone-number" class="input" name="phone-number" type="text" placeholder="Phone Number"/>
+                                </div>
+                                <div id="input-verify-code" class="form-group">
+                                    <input id="verify-code" class="input" name="verify-code" type="text" placeholder="Verification Code"/><button id="get-code" class="button">Get Code</button>
+                                </div>
+                                <input name="clientMac" id="cMac" style="display:none"/>
+                                <input name="apMac" id="apMac" style="display:none"/>
+                                <input name="ssidName" id="ssidName" style="display:none"/>
+                                <input name="radiusSvrIp" id="radiusServerIp" style="display:none"/>
+                            </form>
+                            <span id="oper-hint" style="color: red"></span>
+                            <div id="button-area" class="form-group">
+                                <button id="button-login" class="button oper-section-item">Log In</button>
+                            </div>
+                            <button class="collapsible">Price Duration<i class="arrow"></i></button>
+                            <div class="content">
+                                <table id="priceTable">
+                                    <tr>
+                                        <th>Price</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                    <tr>    
+                                        <td>₱5</td>
+                                        <td>2 Hours</td>
+                                    </tr>
+                                    <tr>
+                                        <td>₱10</td>
+                                        <td>5 Hours</td>
+                                    </tr>
+                                    <tr>
+                                        <td>₱20</td>
+                                        <td>1 Day</td>
+                                    </tr>
+                                    <tr>
+                                        <td>₱55</td>
+                                        <td>3 Days</td>
+                                    </tr>
+                                    <tr>
+                                        <td>₱105</td>
+                                        <td>7 Days</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <button class="collapsible">How to Connect (Paano Kumonekta) <i class="arrow"></i></button>
+                        <div class="content">
+                            <p>1. Open your WiFi and connect to <strong>Prepaid Hotspot</strong> or <strong>Prepaid Hotspot_2.4G</strong></p>
+                            <img src="res/img/instr/instr1.jpg" alt="QR Code for Free WiFi">
+                            <p>2. Select <strong>Voucher Access</strong></p>
+                            <img src="res/img/instr/instr2.jpg" alt="QR Code for Free WiFi">
+                            <p>3. Enter voucher code and click Log In</p>
+                            <img src="res/img/instr/instr3.jpg" alt="QR Code for Free WiFi">
                         </div>
-                        <p><strong>Free 5 minutes daily</strong></p>                
-                    </div>
-                    
-                    <div id="hotspot-section">
-                        <div class="custom-select">
-                            <select id="hotspot-selector" class="oper-section-item"></select>
-                        </div>
-                    </div>
-                    
-                    <form id="login-form">
-                        <div id="input-voucher" class="form-group">
-                            <input id="voucherCode" class="oper-section-item input" name="voucherCode" type="text" placeholder="Enter voucher code"/>
-                        </div>
-                        <div id="input-user" class="form-group">
-                            <input id="username" class="oper-section-item input" name="username" type="text" placeholder="Username"/>
-                        </div>
-                        <div id="input-password" class="form-group password-wrapper">
-                            <input id="password" class="oper-section-item input" name="password" type="password" placeholder="Password"/>
-                            <img src="res/img/eye-icon.png" alt="Show Password" id="togglePassword" class="password-toggle"/>
-                        </div>
-                        <div id="input-simple" class="form-group">
-                            <input id="simplePassword" class="password oper-section-item" name="simplePassword" type="password" placeholder="Simple Password"/>
-                        </div>
-                        <div id="input-phone-num" class="form-group">
-                            <span class="add"></span><input id="country-code" class="input" placeholder="Country Code">
-                        </div>
-                        <div id="input-phone-num" class="form-group">    
-                            <input id="phone-number" class="input" name="phone-number" type="text" placeholder="Phone Number"/>
-                        </div>
-                        <div id="input-verify-code" class="form-group">
-                            <input id="verify-code" class="input" name="verify-code" type="text" placeholder="Verification Code"/><button id="get-code" class="button">Get Code</button>
-                        </div>
-                        <input name="clientMac" id="cMac" type="hidden"/>
-                        <input name="apMac" id="apMac" type="hidden"/>
-                        <input name="ssidName" id="ssidName" type="hidden"/>
-                        <input name="radiusSvrIp" id="radiusServerIp" type="hidden"/>
-                    </form>
-                    
-                    <span id="oper-hint" style="color: red"></span>
-                    <div id="button-area" class="form-group">
-                        <button id="button-login" class="button oper-section-item">Connect</button>
-                    </div>
-                    
-                    <button class="collapsible">Price Duration<i class="arrow"></i></button>
-                    <div class="content">
-                        <table id="priceTable">
-                            <tr>
-                                <th>Price</th>
-                                <th>Duration</th>
-                            </tr>
-                            <tr>    
-                                <td>₱5</td>
-                                <td>2 Hours</td>
-                            </tr>
-                            <tr>
-                                <td>₱10</td>
-                                <td>5 Hours</td>
-                            </tr>
-                            <tr>
-                                <td>₱20</td>
-                                <td>1 Day</td>
-                            </tr>
-                            <tr>
-                                <td>₱55</td>
-                                <td>3 Days</td>
-                            </tr>
-                            <tr>
-                                <td>₱105</td>
-                                <td>7 Days</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <button class="collapsible">How to Connect (Paano Kumonekta) <i class="arrow"></i></button>
-                    <div class="content">
-                        <p>1. Open your WiFi and connect to <strong>Prepaid Hotspot</strong> or <strong>Prepaid Hotspot_2.4G</strong></p>
-                        <img src="res/img/instr/instr1.jpg" alt="QR Code for Free WiFi">
-                        <p>2. Select <strong>Voucher Access</strong></p>
-                        <img src="res/img/instr/instr2.jpg" alt="QR Code for Free WiFi">
-                        <p>3. Enter voucher code and click Log In</p>
-                        <img src="res/img/instr/instr3.jpg" alt="QR Code for Free WiFi">
-                    </div>
-                    
-                    <p class="notes" id="note1">Hourly rates will auto pause when disconnected.</p>
-                    <p class="notes" id="note2">Voucher available @ Dodong Gomez Residence</p>
+                            <p class="notes" id="note1">Hourly rates will auto pause when disconnected.</p>
                 </div>
+                <p class="notes" id="note2">Voucher available @ Dodong Gomez Residence</p>
             </div>
         </div>
 
@@ -220,9 +103,9 @@
             // Carousel functionality
             let currentImage = 1;
             function rotateImages() {
-                document.getElementById(`carouselImage${currentImage}`).style.opacity = 0;
+                document.getElementById(`carouselImage${currentImage}`).style.display = 'none';
                 currentImage = currentImage % 3 + 1;
-                document.getElementById(`carouselImage${currentImage}`).style.opacity = 1;
+                document.getElementById(`carouselImage${currentImage}`).style.display = 'block';
             }
             setInterval(rotateImages, 3000);
 
@@ -236,19 +119,17 @@
             document.getElementById('togglePassword').addEventListener('click', function() {
                 const passwordField = document.getElementById('password');
                 passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
-                this.src = passwordField.type === 'password' ? 'res/img/eye-icon.png' : 'res/img/eye-slash-icon.png';
             });
 
             // Collapsible sections
             document.querySelectorAll('.collapsible').forEach(button => {
                 button.addEventListener('click', function() {
-                    this.classList.toggle('active');
                     const content = this.nextElementSibling;
-                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
                 });
             });
 
-            // Form submission for voucher authentication
+            // Voucher form submission
             document.getElementById('button-login').addEventListener('click', async function(e) {
                 e.preventDefault();
                 
@@ -278,7 +159,6 @@
                     if (data.success) {
                         hintElement.textContent = 'Success! Connecting...';
                         hintElement.style.color = 'green';
-                        // Redirect to success page
                         window.location.href = `https://${apiDomain}/portal/success/?url=${encodeURIComponent(urlParams.get('originUrl') || '1.1.1.1')}`;
                     } else {
                         hintElement.textContent = data.message || 'Invalid voucher code';
