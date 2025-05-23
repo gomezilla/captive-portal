@@ -1,0 +1,274 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f1f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.oper-section-outer, .oper-section-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.container {
+    position: relative;
+    min-width: 280px;
+    max-width: 600px; /* Limiting maximum width for desktop */
+    
+    background: rgba(255, 255, 255, 0.8);
+    /* box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1); */
+    border-radius: 10px;
+    padding: 20px;
+    color: #333;
+    margin: 10px; /* Adding margin for better spacing */
+    box-sizing: border-box;
+
+}
+
+.header {
+    color: rgb(107, 107, 107);
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 0px; /* Spacing below the header */
+}
+
+ 
+
+/* Custom dropdown */
+.custom-select {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border: none;
+    margin-bottom: 15px;
+    background: #f2f2f2;
+    color: #333;
+    font-size: 14px;
+}
+
+.custom-select select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.custom-select select:focus {
+    outline: none;
+}
+
+.custom-select select:hover {
+    background: #e6e6e6;
+}
+
+.custom-select select option {
+    color: #333;
+    background: #f2f2f2;
+}
+
+.custom-select select option:hover {
+    background: #e6e6e6;
+}
+
+/* form section */ 
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    color: #666;
+}
+
+.form-group input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+}
+
+.form-group button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 2px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    background-color: #007BFF;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+th, td {
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    color: #333;
+    table-layout: fixed;
+    justify-content: space-between; 
+}
+th {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border-top: 1px solid #e1f1fc; /* Adjust color and thickness as needed */
+    border-bottom: 1px solid #e1f1fc; /* Adjust color and thickness as needed */
+}
+tr:nth-child(even) {
+    background-color: #f8f9fb;
+    
+}
+tr:hover {
+    background-color: #ebf6fd;
+}
+.notes {
+    text-align: center;
+    color: #333;
+}
+.collapsible {
+    background: rgba(242, 242, 242, 1);
+    color: #333;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    padding-right: 10px; /* Adjust this value based on the size of your icon */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+    margin-bottom: 2px;
+}
+
+.arrow {
+    border: solid #777777;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.collapsible.active .arrow {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.collapsible:hover {
+    background: rgba(230, 230, 230, 1);
+}
+
+.collapsible.active {
+    background: rgba(210, 210, 210, 1);
+}
+
+.content {
+    display: none;
+    overflow: hidden;
+}
+
+#Free img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 60%;
+    height: auto;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Adjusted width for better mobile display */
+        margin: 10px; /* Reduced margin for better spacing */
+    }
+}
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px; /* adjust as needed */
+    height: 20px; /* adjust as needed */
+}
+#hotspot-selector {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+}
+
+#hotspot-selector option {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#hotspot-selector option:hover {
+    background-color: #ddd;
+}
+
+#hotspot-selector option[selected] {
+    background-color: #ccc;
+}
+.carousel {
+    width: 100%; /* Adjust as needed */
+    max-height: 300px; /* Set a maximum height */
+    position: relative; /* Positions the carousel relative to its nearest positioned ancestor */
+    overflow: hidden; /* Ensures that the images do not overflow the carousel container */
+}
+
+
+.carouselImage {
+    width: 100%; /* Makes the image take up the full width of the .carousel container */
+    height: auto; /* This will scale the height relative to the width */
+    object-fit: cover; /* This will crop the images to fill the container while maintaining the aspect ratio */
+    position: relative; /* Positions the image at a specified position relative to its nearest positioned ancestor */
+    top: 0;
+    left: 0;
+}
