@@ -1,175 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="stylesheet" href="light.css" media="(prefers-color-scheme: light)">
-        <link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body class="portal">
-        <div class="oper-section-outer">
-                <div class="oper-section-inner">
-                    <div class="container">
-                        <div class="header">
-                            <div class="carousel">
-                                <img id="carouselImage1" class="carouselImage" src="res/img/image1.jpg" alt="Image 1">
-                                <img id="carouselImage2" class="carouselImage" src="res/img/image2.jpg" alt="Image 2" style="display: none;">
-                                <img id="carouselImage3" class="carouselImage" src="res/img/image3.jpg" alt="Image 3" style="display: none;">
-                            </div>                  
-                        </div>                        
-                            <div id="hotspot-section">
-                                <div class="custom-select">
-                                    <select id="hotspot-selector" class="oper-section-item"></select>
-                                </div>
-                            </div>
-                            <form id="login-form">
-                                <div id="input-voucher" class="form-group">
-                                    <input id="voucherCode" class="oper-section-item input" name="voucherCode" type="text" placeholder="Enter voucher code"/>
-                                </div>
-                                <div id="input-user" class="form-group">
-                                    <input id="username" class="oper-section-item input" name="username" type="text" placeholder="Username"/>
-                                </div>
-                                <div id="input-password" class="form-group password-wrapper">
-                                    <input id="password" class="oper-section-item input" name="password" type="password" placeholder="Password"/>
-                                    <img src="res/img/eye-icon.png" alt="Show Password" id="togglePassword" class="password-toggle"/>
-                                </div>
-                                <div id="input-simple" class="form-group">
-                                    <input id="simplePassword" class="password oper-section-item" name="simplePassword" type="password" placeholder="Simple Password"/>
-                                </div>
-                                <div id="input-phone-num" class="form-group">
-                                    <span class="add"></span><input id="country-code" class="input" placeholder="Country Code">
-                                </div>
-                                <div id="input-phone-num" class="form-group>    
-                                    <input id="phone-number" class="input" name="phone-number" type="text" placeholder="Phone Number"/>
-                                </div>
-                                <div id="input-verify-code" class="form-group">
-                                    <input id="verify-code" class="input" name="verify-code" type="text" placeholder="Verification Code"/><button id="get-code" class="button">Get Code</button>
-                                </div>
-                                <input name="clientMac" id="cMac" style="display:none"/>
-                                <input name="apMac" id="apMac" style="display:none"/>
-                                <input name="ssidName" id="ssidName" style="display:none"/>
-                                <input name="radiusSvrIp" id="radiusServerIp" style="display:none"/>
-                            </form>
-                            <span id="oper-hint" style="color: red"></span>
-                            <div id="button-area" class="form-group">
-                                <button id="button-login" class="button oper-section-item">Log In</button>
-                            </div>
-                            <button class="collapsible">Price Duration<i class="arrow"></i></button>
-                            <div class="content">
-                                <table id="priceTable">
-                                    <tr>
-                                        <th>Price</th>
-                                        <th>Duration</th>
-                                    </tr>
-                                    <tr>    
-                                        <td>₱5</td>
-                                        <td>2 Hours</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₱10</td>
-                                        <td>5 Hours</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₱20</td>
-                                        <td>1 Day</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₱55</td>
-                                        <td>3 Days</td>
-                                    </tr>
-                                    <tr>
-                                        <td>₱105</td>
-                                        <td>7 Days</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <button class="collapsible">How to Connect (Paano Kumonekta) <i class="arrow"></i></button>
-                        <div class="content">
-                            <p>1. Open your WiFi and connect to <strong>Prepaid Hotspot</strong> or <strong>Prepaid Hotspot_2.4G</strong></p>
-                            <img src="res/img/instr/instr1.jpg" alt="QR Code for Free WiFi">
-                            <p>2. Select <strong>Voucher Access</strong></p>
-                            <img src="res/img/instr/instr2.jpg" alt="QR Code for Free WiFi">
-                            <p>3. Enter voucher code and click Log In</p>
-                            <img src="res/img/instr/instr3.jpg" alt="QR Code for Free WiFi">
-                        </div>
-                            <p class="notes" id="note1">Hourly rates will auto pause when disconnected.</p>
-                </div>
-                <p class="notes" id="note2">Voucher available @ Dodong Gomez Residence</p>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi Voucher Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; box-sizing: border-box; }
+        button { background: #0066ff; color: white; border: none; padding: 12px 20px; width: 100%; cursor: pointer; }
+        #message { margin-top: 15px; color: #d9534f; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>WiFi Voucher Access</h2>
+        <form id="voucherForm">
+            <input type="text" id="voucherCode" placeholder="Enter voucher code" required>
+            <button type="submit">Connect</button>
+        </form>
+        <p id="message"></p>
+    </div>
 
-        <script>
-            // Carousel functionality
-            let currentImage = 1;
-            function rotateImages() {
-                document.getElementById(`carouselImage${currentImage}`).style.display = 'none';
-                currentImage = currentImage % 3 + 1;
-                document.getElementById(`carouselImage${currentImage}`).style.display = 'block';
-            }
-            setInterval(rotateImages, 3000);
-
-            // Get parameters from Omada redirect URL
-            const urlParams = new URLSearchParams(window.location.search);
-            document.getElementById('cMac').value = urlParams.get('clientMac') || '';
-            document.getElementById('apMac').value = urlParams.get('apMac') || '';
-            document.getElementById('ssidName').value = urlParams.get('ssidName') || '';
-
-            // Password toggle visibility
-            document.getElementById('togglePassword').addEventListener('click', function() {
-                const passwordField = document.getElementById('password');
-                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
-            });
-
-            // Collapsible sections
-            document.querySelectorAll('.collapsible').forEach(button => {
-                button.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    <script>
+        document.getElementById("voucherForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const code = document.getElementById("voucherCode").value;
+            const params = new URLSearchParams(window.location.search);
+            const messageEl = document.getElementById("message");
+            
+            try {
+                const response = await fetch(`https://${params.get('apiDomain')}/api/external/voucher/apply`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        code: code,
+                        apMac: params.get('apMac'),
+                        clientMac: params.get('clientMac'),
+                        clientIp: params.get('clientIp'),
+                        ssidName: params.get('ssidName'),
+                        radioId: params.get('radioId')
+                    })
                 });
-            });
-
-            // Voucher form submission
-            document.getElementById('button-login').addEventListener('click', async function(e) {
-                e.preventDefault();
                 
-                const voucherCode = document.getElementById('voucherCode').value;
-                const hintElement = document.getElementById('oper-hint');
-                hintElement.textContent = 'Processing...';
-                hintElement.style.color = '#0066ff';
-
-                try {
-                    const apiDomain = urlParams.get('apiDomain') || 'aps1-api-omada-controller.tplinkcloud.com';
-                    const response = await fetch(`https://${apiDomain}/api/external/voucher/apply`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            code: voucherCode,
-                            apMac: urlParams.get('apMac'),
-                            clientMac: urlParams.get('clientMac'),
-                            clientIp: urlParams.get('clientIp'),
-                            ssidName: urlParams.get('ssidName'),
-                            radioId: urlParams.get('radioId')
-                        })
-                    });
-
-                    const data = await response.json();
-                    if (data.success) {
-                        hintElement.textContent = 'Success! Connecting...';
-                        hintElement.style.color = 'green';
-                        window.location.href = `https://${apiDomain}/portal/success/?url=${encodeURIComponent(urlParams.get('originUrl') || '1.1.1.1')}`;
-                    } else {
-                        hintElement.textContent = data.message || 'Invalid voucher code';
-                        hintElement.style.color = 'red';
-                    }
-                } catch (error) {
-                    hintElement.textContent = 'Network error. Please try again.';
-                    hintElement.style.color = 'red';
-                    console.error('Error:', error);
+                const data = await response.json();
+                if (data.success) {
+                    window.location.href = `https://${params.get('apiDomain')}/portal/success/?url=${encodeURIComponent(params.get('originUrl'))}`;
+                } else {
+                    messageEl.textContent = data.message || "Invalid voucher code";
                 }
-            });
-        </script>
-    </body>
+            } catch (error) {
+                messageEl.textContent = "Network error. Please try again.";
+            }
+        });
+    </script>
+</body>
 </html>
